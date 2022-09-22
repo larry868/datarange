@@ -14,11 +14,11 @@ A datarange must be created with a factory
 
 ```go
     // simple data range with values from 0 to 10 meters, without stepsize
-	dr1 := Build(0, 10, 0, "meter")
+	dr1 := Make(0, 10, 0, "meter")
     // simple data range with values from 0 to 10 meters, with 10 steps of 1 meter
-	dr2 := Build(0, 10, 1, "meter")
+	dr2 := Make(0, 10, 1, "meter")
     // data range with values from 1 to 10 meters, leaving the factory calculating the best stepsize to get a maximum number of 20 steps
-	dr3 := Build(0, 10, -20, "meter")
+	dr3 := Make(0, 10, -20, "meter")
 ```
 
 see examples in the [DataRange package documentation](https://pkg.go.dev/github.com/sunraylab/datarange#pkg-examples)
@@ -32,4 +32,5 @@ go get -u github.com/sunraylab/datarange@latest
 ## Changelog
 
 - v1.0.0: first release
+- v1.1.0: fix some bugs and rename func ``Build`` to ``Make`` to follow go naming guidelines
 

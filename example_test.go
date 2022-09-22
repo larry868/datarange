@@ -16,7 +16,7 @@ func ExampleDataRange() {
 	datasetMaxValue := 10850.12
 
 	// build a range, with an automatic stepsize to get a max of 10 steps on the scale
-	dr := Build(datasetMinValue, datasetMaxValue, -10, "amount")
+	dr := Make(datasetMinValue, datasetMaxValue, -10, "amount")
 	fmt.Printf("dataset = %v\n", dr)
 
 	// step througth the datarange
@@ -38,14 +38,15 @@ func ExampleDataRange() {
 
 func ExampleDataRange_Steps() {
 
-	var drs [7]DataRange
-	drs[0] = Build(1, 10, 1, "meter")
-	drs[1] = Build(-10, 10, 0.1, "meter")
-	drs[2] = Build(1.245, 2.4, 0, "meter")
-	drs[3] = Build(12448, 548983, 25, "meter")
-	drs[4] = Build(1, 2, 10, "meter")
-	drs[5] = Build(1.5, 1.5, 1, "meter")
-	drs[6] = Build(10, 10, 10, "meter")
+	var drs [8]DataRange
+	drs[0] = Make(1, 10, 1, "meter")
+	drs[1] = Make(-10, 10, 0.1, "meter")
+	drs[2] = Make(1.245, 2.4, 0, "meter")
+	drs[3] = Make(12448, 548983, 25, "meter")
+	drs[4] = Make(1, 2, 10, "meter")
+	drs[5] = Make(1.5, 1.5, 1, "meter")
+	drs[6] = Make(10, 10, 10, "meter")
+	drs[7] = Make(19421.8139685769, 20402.658509423058, -10.0, "test")
 
 	var stri string
 	for _, dr := range drs {
@@ -66,9 +67,10 @@ func ExampleDataRange_Steps() {
 	// meter[ 0 :10: 10 ], intervals=1
 	// meter[ 1 :1: 2 ], intervals=1
 	// meter[ 10 :10: 10 ], intervals=0
+	// meter[ 19250 :250: 20500 ], intervals=5
 }
 
-func ExampleBuild() {
+func ExampleMake() {
 
 	type sample struct {
 		low      float64
@@ -78,7 +80,7 @@ func ExampleBuild() {
 	samples := []sample{{0, 10, 10}, {3, 10, 10}, {5, 10, 10}, {8, 10, 10}, {9, 10, 10}, {1000, 65000, 10}, {12456, 45789, 20}, {9925, 10401, 10}}
 
 	for _, s := range samples {
-		dr := Build(s.low, s.high, -s.maxsteps, "amount")
+		dr := Make(s.low, s.high, -s.maxsteps, "amount")
 		fmt.Printf("range[%v %v]/%v --> %v with %v intervals\n", s.low, s.high, s.maxsteps, dr.String(), dr.Steps())
 	}
 

@@ -48,7 +48,7 @@ func (thisdr DataRange) String() string {
 // lowboudaries and highboundaries are automatically determined according to a and b values
 //
 // lowboundary is rounded down, highboundary is rounded up
-func Build(a float64, b float64, stepsize float64, unit string) DataRange {
+func Make(a float64, b float64, stepsize float64, unit string) DataRange {
 	dr := &DataRange{unit: unit}
 
 	if stepsize >= 0 {
@@ -62,7 +62,7 @@ func Build(a float64, b float64, stepsize float64, unit string) DataRange {
 		rawstep := delta / float64(maxsteps)
 		exp := float64(int(math.Log10(rawstep)+1) - 1)
 
-		basicstepsizes := []float64{1.0, 2.5, 5.0, 10.0}
+		basicstepsizes := []float64{1.0, 2.5, 5.0, 10.0, 25.0, 50.0}
 		for _, basicstepsize := range basicstepsizes {
 			possiblestepsize := basicstepsize * math.Pow(10, exp)
 
