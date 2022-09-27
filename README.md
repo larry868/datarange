@@ -2,11 +2,13 @@
 
 DataRange represents a range bounded by a low and a high value. 
 
+[![Go Reference](https://pkg.go.dev/badge/github.com/sunraylab/datarange.svg)](https://pkg.go.dev/github.com/sunraylab/datarange)
+
 stepsize property allows stepping througth the datarange. If stepsize is defined then boundaries are rounded at stepsize level to ensure an integer number of steps.
 
 stepsize can be automatically calculated according to a requested maximum number of steps. Calculated StepSize is a power of 1.0, 2.5 and 5.0. For example 100, 250, 500, 5000, 50000, or 0.25, 0.1 are calculated stepsize.
 
-This is very usefull to build a axis scale on chart for example.
+This is very usefull to build axis scale on a chart for example.
 
 ## Usage
 
