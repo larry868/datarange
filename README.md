@@ -33,6 +33,7 @@ go get -u github.com/sunraylab/datarange@latest
 
 ## Changelog
 
-- v1.0.0: first release
+- v1.2.0: migration to larry868 & go v1.23
 - v1.1.0: fix some bugs and rename func ``Build`` to ``Make`` to follow go naming guidelines
+- v1.0.0: first release
 
